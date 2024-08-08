@@ -6,6 +6,8 @@ services:
       - '4000:4000'
     depends_on:
       - pythonapp
+    networks:
+      - daemon_network
 
   pythonapp:
     build: ./python/
@@ -14,12 +16,22 @@ services:
       - '5000:5000'
     depends_on:
       - mysql
+    networks:
+      - daemon_network
 
   mysql:
     build: ./db/
     restart: always
+    env_file:
+      - .env
     environment:
-      MYSQL_DATABASE: 'queue_db'
-      MYSQL_ROOT_PASSWORD: '12976'
+      - MYSQL_DATABASE=${MYSQLDATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQLPASSWORD}
     ports:
-      - '3306:3306'
+      - '3308:3306'
+    networks:
+      - daemon_network
+
+networks:
+  daemon_network:
+    driver: bridge
