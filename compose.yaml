@@ -6,6 +6,8 @@ services:
       - '4000:4000'
     depends_on:
       - pythonapp
+    volumes:
+      - ./daemon:/app
     networks:
       - daemon_network
 
@@ -16,6 +18,8 @@ services:
       - '5001:5001'
     depends_on:
       - mysql
+    volumes:
+      - ./python:/app
     networks:
       - daemon_network
 
@@ -29,6 +33,8 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQLPASSWORD}
     ports:
       - '3308:3306'
+    volumes:
+      - ./data:/app
     networks:
       - daemon_network
 
