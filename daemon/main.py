@@ -1,9 +1,11 @@
 import time
+import sys 
 import requests
 import os
 from dotenv import load_dotenv
 from flask import json, jsonify
-from db import fetch_messages,insert_into_sms_archive,delete_message
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from python.db import fetch_messages,insert_into_sms_archive,delete_message
 load_dotenv()
 i=1
 while True:
