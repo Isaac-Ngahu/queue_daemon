@@ -13,7 +13,7 @@ services:
     build: ./python/
     command: sh -c "sleep 5s ; python ./app.py"
     ports:
-      - '5000:5000'
+      - '5001:5001'
     depends_on:
       - mysql
     networks:
