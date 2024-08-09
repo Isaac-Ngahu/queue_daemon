@@ -20,7 +20,7 @@ while True:
             "SenderId": os.getenv('DAEMONSENDERID'),
         "MessageParameters": [
         {
-      "Number":int(message[2]),
+      "Number":int(message[3]),
       "Text": message[1]
         }
         ],
