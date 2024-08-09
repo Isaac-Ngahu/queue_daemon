@@ -2,11 +2,12 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 load_dotenv()
+port = os.getenv('MYSQLPORT', '3306')
 mydb = mysql.connector.connect(
   host=os.getenv('MYSQLHOST'),
   user=os.getenv('MYSQLUSER'),
   database=os.getenv('MYSQLDATABASE'),
-  port=os.getenv('MYSQLPORT'),
+  port=int(port),
   password=os.getenv('MYSQLPASSWORD')
 )
 
@@ -63,4 +64,4 @@ def insert_into_sms_archive(message):
 
 # print(fetch_messages())
 # print(int("254705832092"))
-# print(os.getenv('MYSQLPORT'))
+print(type(os.getenv('MYSQLPORT')))
